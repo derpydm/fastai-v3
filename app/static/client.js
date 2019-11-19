@@ -14,14 +14,13 @@ function showPicked(input) {
   reader.readAsDataURL(input.files[0]);
 }
 
-function analyze() {
-  var uploadFiles = el("file-input").files;
-  if (uploadFiles.length !== 1) alert("Please select a file to analyze!");
+function generate() {
+  alert("it works ok")
+  el("analyze-button").innerHTML = "Generating...";
 
-  el("analyze-button").innerHTML = "Analyzing...";
   var xhr = new XMLHttpRequest();
   var loc = window.location;
-  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,
+  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/generate`,
     true);
   xhr.onerror = function() {
     alert(xhr.responseText);
@@ -38,4 +37,3 @@ function analyze() {
   fileData.append("file", uploadFiles[0]);
   xhr.send(fileData);
 }
-
