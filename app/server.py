@@ -54,9 +54,9 @@ async def homepage(request):
     return HTMLResponse(html_file.open().read())
 
 
-@app.route('/generate', methods=['GET'])
+@app.route('/generate', methods=['POST'])
 async def predict(request):
-    TEXT = await get_bytes(request.query_params["enteredText"])
+    TEXT = request.form['enteredText']
     N_WORDS = 500
     N_SENTENCES = 90
     prediction = "idqhiudhqw"
