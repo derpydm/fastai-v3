@@ -6,6 +6,9 @@ function generate() {
   el("analyze-button").innerHTML = "Generating...";
   var xhr = new XMLHttpRequest();
   var loc = window.location;
+  var response = el("enteredText").value;
+  el("result-label").innerHTML = "Result = response";
+
   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/generate`,
     true);
   xhr.onerror = function() {
@@ -14,7 +17,7 @@ function generate() {
   xhr.onload = function(e) {
     if (this.readyState === 4) {
         var response = el("enteredText").value
-      el("result-label").innerHTML = `Result = ${response}`;
+        el("result-label").innerHTML = "Result = response";
     }
     el("analyze-button").innerHTML = "Generate";
   };
