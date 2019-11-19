@@ -56,12 +56,13 @@ async def homepage(request):
 
 @app.route('/generate', methods=['POST'])
 async def predict(request):
-##    TEXT = request.form['enteredText']
-##    N_WORDS = 500
-##    N_SENTENCES = 90
-##    prediction = "idqhiudhqw"
-    print("the generate function was called!")
-    return JSONResponse({'result': "e"})
+  enteredText = await request.form()
+  TEXT = enteredText['enteredText']
+  N_WORDS = 500
+  N_SENTENCES = 90
+  prediction = "idqhiudhqw"
+  print("the generate function was called!")
+  return JSONResponse({'result': TEXT})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv:
