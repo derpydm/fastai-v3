@@ -30,7 +30,7 @@ function generate() {
       var response = JSON.parse(e.target.responseText);
       el("result-label").innerHTML = `Result = ${response["result"]}`;
     }
-    el("analyze-button").innerHTML = "Analyze";
+    el("analyze-button").innerHTML = "Generate";
   };
 
   var fileData = new FormData();

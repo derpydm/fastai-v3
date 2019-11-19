@@ -60,7 +60,7 @@ async def predict(request):
     TEXT = "On a rainy day..."
     N_WORDS = 500
     N_SENTENCES = 90
-    prediction = "\n".join(learn.predict(TEXT, N_WORDS, temperature=0.25) for _ in range(N_SENTENCES))#put in the arguments later)
+    prediction = "idqhiudhqw"
     return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
