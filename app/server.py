@@ -54,14 +54,13 @@ async def homepage(request):
     return HTMLResponse(html_file.open().read())
 
 
-@app.route('/generate', methods=['POST'])
+@app.route('/generate', methods=['GET'])
 async def predict(request):
-    TEXT = "On a rainy day..."
+    TEXT = await get_bytes(request.query_params["enteredText"])
     N_WORDS = 500
     N_SENTENCES = 90
     prediction = "idqhiudhqw"
     return JSONResponse({'result': str(prediction)})
-
 if __name__ == '__main__':
     if 'serve' in sys.argv:
         uvicorn.run(app=app, host='0.0.0.0', port=5000, log_level="info")
