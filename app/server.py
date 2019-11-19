@@ -56,7 +56,6 @@ async def homepage(request):
 
 @app.route('/generate', methods=['POST'])
 async def predict(request):
-    prompt = await request.form()
     TEXT = "On a rainy day..."
     N_WORDS = 500
     N_SENTENCES = 90
