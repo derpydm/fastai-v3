@@ -2,7 +2,7 @@ import aiohttp
 import asyncio
 import uvicorn
 from fastai import *
-from fastai.vision import *
+from fastai.text import *
 from io import BytesIO
 from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
@@ -57,10 +57,11 @@ async def homepage(request):
 @app.route('/generate', methods=['POST'])
 async def predict(request):
     prompt = await request.form()
-    print(prompt)
-    prediction = learn.predict()#put in the arguments later)
+    TEXT = "On a rainy day..."
+    N_WORDS = 500
+    N_SENTENCES = 90
+    prediction = "\n".join(learn.predict(TEXT, N_WORDS, temperature=0.25) for _ in range(N_SENTENCES))#put in the arguments later)
     return JSONResponse({'result': str(prediction)})
-
 
 if __name__ == '__main__':
     if 'serve' in sys.argv:
